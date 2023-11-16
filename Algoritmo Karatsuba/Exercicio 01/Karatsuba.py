@@ -21,6 +21,11 @@ print(f"Resultado: {resultado}")
 
 
 
+
+
+
+
+
 '''
 como o python faz essa multiplicação por trás dos panos. Colocar no relatório.
 '''
