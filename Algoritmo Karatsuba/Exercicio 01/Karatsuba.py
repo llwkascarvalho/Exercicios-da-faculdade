@@ -3,24 +3,22 @@ import matplotlib.pyplot as plt
 import timeit
 
 def karatsuba(x, y):
-    # Implementação do algoritmo de Karatsuba
-    x_str, y_str = str(x), str(y)
-    max_len = max(len(x_str), len(y_str))
-    x_str = x_str.zfill(max_len)
-    y_str = y_str.zfill(max_len)
+    if x < 10 or y < 10:
+        return x * y
 
-    if max_len == 1:
-        return int(x_str) * int(y_str)
+    n = max(len(str(x)), len(str(y)))
+    m = n // 2
 
-    mid = max_len // 2
-    a, b = int(x_str[:mid]), int(x_str[mid:])
-    c, d = int(y_str[:mid]), int(y_str[mid:])
+    a, b = divmod(x, 10**m)
+    c, d = divmod(y, 10**m)
+
     ac = karatsuba(a, c)
     bd = karatsuba(b, d)
-    ad_bc = karatsuba(a + b, c + d) - ac - bd
+    ad_bc = karatsuba((a + b), (c + d)) - ac - bd
 
-    result = ac * 10**(2 * mid) + ad_bc * 10**mid + bd
-    return result
+    resultado = ac * 10**(2*m) + ad_bc * 10**m + bd
+
+    return resultado
 
 def measure_time(func, *args, num_iterations=1000):
     time = timeit.timeit(lambda: func(*args), number=num_iterations)
