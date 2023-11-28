@@ -8,3 +8,7 @@ print(result.group()) # Programação
 print(result.span()) # (13,24)
 print(re.search(r'^\w*', texto)) # <re.Match object; span=(0, 10), match='Algoritmos'>
 print(re.search(r'\w*$', texto)) # <re.Match object; span=(28, 40), match='Computadores'>
+
+result = re.search(r'\w+', texto)
+print(result.group()) # Algoritmos
+print(result.span()) # (0, 10)
