@@ -1,8 +1,3 @@
-'''
-Dada uma expressão regular e uma string, a função findall
-retorna uma lista com todas as ocorrências do padrão
-especificado pela expressão regular.
-'''
 import re
 
 texto = "Algoritmos e Programação de Computadores"
