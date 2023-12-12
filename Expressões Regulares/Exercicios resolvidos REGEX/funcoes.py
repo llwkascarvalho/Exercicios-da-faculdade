@@ -31,6 +31,8 @@ print(extrair_telefones(texto)) # ['123-456-789', '987 654 321']
 
 #SUB
 
+#Exercicio 1 
+
 def substituir_urls(texto):
     # Define um padrão regex para URLs
     pattern = r'https?://\S+'
@@ -42,19 +44,62 @@ texto = "Visite nosso site em http://www.exemplo.com ou https://exemplo.com.br p
 print(substituir_urls(texto)) # "Visite nosso site em [LINK] ou [LINK] para mais informações."
 
 
+#Exercicio 2
+
+texto = "Removendo as <em>marcas</em> do <pre>texto</pre>."
+print(re.sub(r'<.*>', "", texto))
+# Removendo as .
+print(re.sub(r'</.*>', "", texto))
+# Removendo as <em>marcas.
+print(re.sub(r'<.*?>', "", texto))
+# Removendo as marcas do texto.
+
+
 # SEARCH 
 
+#Exercicio 1
+
 import re
+
+texto = "Algoritmos e Programação de Computadores"
+
+print(re.search(r'o(.*)e(.*)o', texto).group())
+# oritmos e Programação de Computado
+
+print(re.search(r'o(.*)e(.*?)o', texto).group())
+# oritmos e Programação de Co
+
+print(re.search(r'o(.*?)e(.*?)o', texto).group())
+# oritmos e Pro
+
+#Exercicio 2
 
 regexp = r'^[+-]?[0-9]+(\.[0-9]+)?$'
 
 while True:
-    número = input()
+    numero = input()
 
-    if not(número):
+    if not(numero):
         break
     
-    if re.search(regexp, número):
-        print ("OK")
+    if re.search(regexp, numero):
+        print(numero)
     else:
         print("ERRO")
+
+
+#Exercicio 3 
+        
+
+texto = "Data de Nascimento: 19/09/1975"
+result = re.search(r'(\d{2})/(\d{2})/(\d{4})', texto)
+print(result.group())
+# 19/09/1975
+print("Dia:", result.group(1))
+# Dia: 19
+print("Mês:", result.group(2))
+# Mês: 09
+print("Ano:", result.group(3))
+# Ano: 1975
+print(result.group(1, 2, 3))
+# ('19', '09', '1975')
